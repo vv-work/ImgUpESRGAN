@@ -1,4 +1,5 @@
 import os
+import torch
 import sys
 import glob
 from test import upscale_image
