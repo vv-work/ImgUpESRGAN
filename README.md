@@ -1,4 +1,11 @@
+#  My image upscale
+
+
+> Command
+`py .\upscale_images.py C:\Git\AnkiEdu\MLFlashCards\In C:\Git\AnkiEdu\MLFlashCards\Out`
+
 ## ESRGAN (Enhanced SRGAN) [:rocket: [BasicSR](https://github.com/xinntao/BasicSR)] [[Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN)]
+
 
 :sparkles: **New Updates.**
 
