@@ -23,6 +23,18 @@ def upscale_image(input_path, output_path, model_path, device):
         output = model(Variable(img_LR)).data.squeeze().float().cpu().clamp_(0, 1).numpy()
         output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
         output = (output * 255.0).round()
+    # Set a threshold value to determine white and near-white pixels
+    threshold_value = 240
+
+    # Create a mask for white and near-white pixels
+    white_mask = cv2.inRange(output, np.array([threshold_value, threshold_value, threshold_value]), np.array([255, 255, 255]))
+
+    # Replace near-white pixels with absolute white
+    output[white_mask == 255] = (255, 255, 255)
+
+    # Apply a more aggressive median filter
+    output = cv2.medianBlur(output, 5)
+    
 
     cv2.imwrite(output_path, output)
 
